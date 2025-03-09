@@ -26,7 +26,7 @@ const App = () => {
         try{
             const endpoint = query
                 ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
-                :`${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+                :`${API_BASE_URL}/discover/movie`;
             const response = await fetch(endpoint, API_OPTIONS);
             if(!response.ok){
                 throw new Error("Faild to fetch movies");
@@ -53,7 +53,6 @@ const App = () => {
         try{
             const movies = await getTrendingMovies();
             setTrendingMovies(movies);
-            console.log(movies);
         }catch(e){
             console.error(`Error Fetching trending movies: ${e}`);
         }
